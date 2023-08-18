@@ -40,7 +40,7 @@ export function SearchIssues({ query: initialQuery }: SearchIssuesProps) {
     } else if(prefix &&  query.match(onlyNumbers)) {
       issueKeyQuery = `OR issuekey = ${prefix}-${escapedQuery}`;
     }
-    console.log({issueKeyQuery,escapedQuery,prefix})
+    
     // "text" by default searches in fields summary, description, environment, comments and all text custom fields.
     // Search "project" so that an issuekey prefix will be found (e.g. "APP").
     return `(text ~ "${escapedQuery}" OR project = "${escapedQuery}" ${issueKeyQuery}) ORDER BY updated DESC`;
